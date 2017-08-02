@@ -52,6 +52,7 @@ public class MainFrame extends JFrame implements ActionListener{
             button.setText("X");
             player = PLAYER.O;
         }
+        turn++;
         button.setEnabled(false);
 
         GAME_RESULT result = checkWinner(PLAYER.O);
@@ -59,6 +60,7 @@ public class MainFrame extends JFrame implements ActionListener{
             JOptionPane.showMessageDialog(null, "Wygral gracz O");
             System.exit(0);
         } else {
+            result = checkWinner(PLAYER.X);
             if(result == GAME_RESULT.WIN) {
                 JOptionPane.showMessageDialog(null, "Wygral gracz X");
                 System.exit(0);

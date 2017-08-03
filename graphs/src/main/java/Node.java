@@ -8,6 +8,7 @@ public class Node<T> {
     private T val;
     private List<Node<T>> neighbours;
     private boolean visited;
+    private COLOR color;
 
     public Node(T val) {
         this.val = val;
@@ -33,5 +34,13 @@ public class Node<T> {
 
     public void setVisited(boolean visited) {
         this.visited = visited;
+    }
+
+    public COLOR getColor() {
+        return color;
+    }
+
+    public void setColor(COLOR color) {
+        this.color = color;
     }
 }

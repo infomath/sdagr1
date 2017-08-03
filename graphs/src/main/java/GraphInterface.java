@@ -7,5 +7,8 @@ public interface GraphInterface<T> {
     //dodaje nowy wierzcholek do grafu
     boolean addNode(T node);
     void addEdge(T a, T b);
-    String search();
+    String searchDFS();
+
+    //a - wartosc wezla od ktorego metoda zacznie przeszukiwac graf
+    String searchBFS(T a);
 }

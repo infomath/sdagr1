@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by klb on 02.08.17.
@@ -32,11 +30,16 @@ public class Graph<T> implements GraphInterface<T> {
             nodes.put(a, nodeA);
         }
 
+        for(Node<T> ne: nodeA.getNeighbours()) {
+            if(ne.getVal().equals(b)) {
+                return;  //nie dodajemy po raz kolejny krawedzi a->b
+            }
+        }
+
         if(nodeB == null) {
             nodeB = new Node<T>(b);
             nodes.put(b, nodeB);
         }
-
 
 //        if(nodeA==null || nodeB==null) {
 //            return false; //nie dodajemy krawedzi
@@ -56,7 +59,40 @@ public class Graph<T> implements GraphInterface<T> {
     }
 
     @Override
-    public String search() {
+    public String searchBFS(T a) {
+        txtGraph = new StringBuilder(); //restart do pustego napisu
+        //kolorujemy wszystkie wezly na bialo
+        for(Node<T> node : nodes.values()) {
+            node.setColor(COLOR.WHITE);
+        }
+
+        //kolejka wezlow ktore trzeba odwiedzic
+        Queue<Node<T>> queue = new LinkedList<>();
+        Node<T> start = nodes.get(a);
+        start.setColor(COLOR.GREY);
+        queue.add(start);
+
+        while(!queue.isEmpty()) {
+            Node<T> node = queue.poll();
+            //dodaje wszystkich bialow sasiadow (takich ktorych trzeba odwiedzic)
+            //do kolejki
+            for(Node<T> neigh : node.getNeighbours()) {
+                if(neigh.getColor().equals(COLOR.WHITE)) {
+                    neigh.setColor(COLOR.GREY);
+                    queue.add(neigh);
+                }
+            }
+            //zmieniamy kolor wezla odwiedzonego na czarny
+            //po to aby nigdy juz go nie ruszyc i nie dodac do kolejki
+            node.setColor(COLOR.BLACK);
+            txtGraph.append(node.getVal() + " ");
+        }
+
+        return txtGraph.toString();
+    }
+
+    @Override
+    public String searchDFS() {
         txtGraph = new StringBuilder(); //restart do pustego napisu
         //obiektu z reprezentacja tekstowa grafu
 

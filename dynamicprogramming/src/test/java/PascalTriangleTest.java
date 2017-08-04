@@ -22,4 +22,5 @@ public class PascalTriangleTest {
         //wczesniej zrobiony obiekt
         PascalTriangle pt2 =  PascalTriangle.getInstance();
     }
+
 }

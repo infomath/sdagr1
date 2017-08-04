@@ -9,6 +9,13 @@ public class SpecialMathImpl implements SpecialMath {
     //czyli calke oznaczona
     @Override
     public double integral(double a, double b, IFun fun) {
-        return 0;
+        double result = 0;
+
+        double d = (b-a)/n;
+
+        for(int i = 1; i <= n; i++) {
+            result += fun.f(a + i*d);
+        }
+        return d*result;
     }
 }

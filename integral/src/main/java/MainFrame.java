@@ -40,18 +40,23 @@ public class MainFrame extends JFrame {
 
                     int index = functions.getSelectedIndex();
                     SpecialMathImpl specialMath = new SpecialMathImpl();
+                    double result;
                     switch(index) {
                         case 0:
-                            double result = specialMath.integral(a, b, x->x);
-                            System.out.println("calka z f(x)=x");
+                            result = specialMath.integral(a, b, x->x);
+                            JOptionPane.showMessageDialog(this, "Integral(a,b,f(x))=" + result, "", JOptionPane.OK_OPTION);
 
                             //wyswietlenie wyniku obliczania calki w oknie dialogowym
                             break;
                         case 1:
-                            System.out.println("f(x)=x^2");
-                        break;
+                            result = specialMath.integral(a, b, x->x*x);
+                            JOptionPane.showMessageDialog(this, "Integral(a,b,f(x))=" + result, "", JOptionPane.OK_OPTION);
+
+                            break;
                         case 2:
-                            System.out.println("f(x)=sin(x)");
+                            result = specialMath.integral(a, b, x->Math.sin(x));
+                            JOptionPane.showMessageDialog(this, "Integral(a,b,f(x))=" + result, "", JOptionPane.ERROR_MESSAGE);
+
                             break;
                     }
                 });

@@ -6,7 +6,7 @@ public interface GraphInterface<T> {
     //wartosci wierzcholkow nie powtarzaja sie w grafie
     //dodaje nowy wierzcholek do grafu
     boolean addNode(T node);
-    void addEdge(T a, T b);
+    void addEdge(T a, T b, int distance);
     String searchDFS();
 
     //a - wartosc wezla od ktorego metoda zacznie przeszukiwac graf

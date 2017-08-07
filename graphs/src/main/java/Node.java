@@ -6,13 +6,16 @@ import java.util.List;
  */
 public class Node<T> {
     private T val;
-    private List<Node<T>> neighbours;
+    private List<Edge<T>> neighbours;  //sasiedzi do ktorych mozna przejsc z biezacego wierzcholka
     private boolean visited;
     private COLOR color;
+    private Integer minDistace;   //najkrotsza droga prowadzaca z wierzcholka startowego do tego wierzcholka
+    private Node<T> parent;  //referencja do takiego rodzica tego wierzcholka, do ktorego mozna najszybciej
+    //przejsc z wierzcholka startowego
 
     public Node(T val) {
         this.val = val;
-        neighbours = new LinkedList<Node<T>>();
+        neighbours = new LinkedList<Edge<T>>();
         visited = false;
     }
 
@@ -24,7 +27,7 @@ public class Node<T> {
         this.val = val;
     }
 
-    public List<Node<T>> getNeighbours() {
+    public List<Edge<T>> getNeighbours() {
         return neighbours;
     }
 
@@ -42,5 +45,40 @@ public class Node<T> {
 
     public void setColor(COLOR color) {
         this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Node<?> node = (Node<?>) o;
+
+        return val.equals(node.val);
+    }
+
+    public void setNeighbours(List<Edge<T>> neighbours) {
+        this.neighbours = neighbours;
+    }
+
+    public Integer getMinDistace() {
+        return minDistace;
+    }
+
+    public void setMinDistace(Integer minDistace) {
+        this.minDistace = minDistace;
+    }
+
+    @Override
+    public int hashCode() {
+        return val.hashCode();
+    }
+
+    public Node<T> getParent() {
+        return parent;
+    }
+
+    public void setParent(Node<T> parent) {
+        this.parent = parent;
     }
 }

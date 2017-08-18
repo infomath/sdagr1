@@ -17,6 +17,6 @@ public class NewXMLWriter {
     //odpowiednik metody read ze starej klasy
     //zwraca zawartosc pliku
     public String load() {
-
+        return "zawartosc pliku przy uzyciu nowej klasy";
     }
 }

@@ -13,6 +13,10 @@ public class Main {
         writer.saveXML("c:\\test.xml", data);
     }
 
+    private static void loadReport(XmlHelper writer, String path) {
+        System.out.println(writer.read(path));
+    }
+
 
     //dodac metode ktora jako argument przyjmuje obiekt do wczytania pliku
 
@@ -20,5 +24,7 @@ public class Main {
         generateReport("abcd", new XMLAdapter());
         Utils utils = new Utils();
         utils.generateReport("xyz", new XMLAdapter());
+
+        loadReport(new XMLAdapter(), "C;\test.txt");
     }
 }

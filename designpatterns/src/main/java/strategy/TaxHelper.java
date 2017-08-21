@@ -20,6 +20,14 @@ public class TaxHelper {
     }
 
     public void changeTax(Country country) {
-        //TODO: dokonczyc
+       switch(country) {
+           case PL:
+               itax = new TaxPl();
+               break;
+           case ENG:
+               itax = new TaxEng();
+               break;
+
+       }
     }
 }

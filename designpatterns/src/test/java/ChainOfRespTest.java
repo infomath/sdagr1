@@ -1,5 +1,6 @@
 import chainofrespons.MinusOperation;
 import chainofrespons.OperationExecutor;
+import chainofrespons.OperationMultiply;
 import chainofrespons.PlusOperation;
 import org.junit.Test;
 
@@ -12,14 +13,16 @@ public class ChainOfRespTest {
 
     @Test
     public void test() {
-        String []t = {"+ 2", "- 1", "+ 3", "- 1"};
+        String []t = {"+ 2", "- 1", "+ 3", "- 1", "* 4"};
+        OperationExecutor mult = new OperationMultiply();
         OperationExecutor plus = new PlusOperation();
         OperationExecutor minus = new MinusOperation();
+        mult.setNextOperation(plus);
         plus.setNextOperation(minus);
         for(String token : t) {
-            plus.compute(token);
+            mult.compute(token);
         }
 
-        assertEquals(3, OperationExecutor.getResult(), 0);
+        assertEquals(12, OperationExecutor.getResult(), 0);
     }
 }

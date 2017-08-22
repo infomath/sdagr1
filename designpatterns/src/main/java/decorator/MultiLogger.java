@@ -21,10 +21,9 @@ public class MultiLogger extends LoggerDecorator {
 
     @Override
     public void log(String message) {
-        //logowanie na konsole
+        //logowanie na konsole i do pliku
         super.log(message);
 
-        logToFile(message);
     }
 
     @Override
@@ -32,8 +31,5 @@ public class MultiLogger extends LoggerDecorator {
         simpleLogger.clear();
     }
 
-    //metoda z dodatkowa logika
-    private void logToFile(String message) {
-        System.out.println("File: " + message);
-    }
+
 }
